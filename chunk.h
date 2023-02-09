@@ -9,6 +9,11 @@
 typedef enum
 {
   OP_CONSTANT, // A constant will store its opcode and an operand, the operand could be the index of the constant value in memory
+  OP_ADD,
+  OP_SUBTRACT,
+  OP_MULTIPLY,
+  OP_DIVIDE,
+  OP_NEGATE,
   OP_RETURN,
 } OpCode;
 
