@@ -24,12 +24,13 @@ typedef struct
   int count;
   int capacity;
   uint8_t *code;
+  int* lines; //we will keep a separate array of line numbers to report errors
   ValueArray constants;
 } Chunk;
 
 void initChunk(Chunk *chunk);
 void freeChunk(Chunk *chunk);
-void writeChunk(Chunk *chunk, uint8_t byte);
+void writeChunk(Chunk *chunk, uint8_t byte, int line); //we must pass the line number of the chunk
 int addConstant(Chunk* chunk, Value value);
 
 #endif
