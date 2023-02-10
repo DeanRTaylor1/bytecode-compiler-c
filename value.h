@@ -3,7 +3,20 @@
 
 #include "common.h"
 
-typedef double Value;
+typedef enum {
+  VAL_BOOL,
+  VAL_NIL, 
+  VAL_NUMBER,
+} ValueType;
+
+//A union looks like a struct except that all of its fields overlap in memory.
+typedef struct {
+  ValueType type;
+  union {
+    bool boolean;
+    double number;
+  } as; 
+} Value;
 
 //In our bytecode compiler, we will store all const literal values in an ValueArray
 //This means that when our program needs to find them we just check the offset value to find the value
