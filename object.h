@@ -17,7 +17,7 @@ typedef enum {
 
 struct Obj {
   ObjType type;
-  struct Obj* next;
+  struct Obj *next;
 };
 
 // to enable strings to be modified we store the array of chars on the heap. On
@@ -30,9 +30,12 @@ struct ObjString {
   Obj obj;
   int length;
   char *chars;
+  uint32_t hash; // we will calculate the hash when the objstring is initialised
+                 // as the operation is already o(n) this will save us time
+                 // later if we need to store it in our hashtable
 };
 
-ObjString* takeString(char* chars, int length);
+ObjString *takeString(char *chars, int length);
 
 ObjString *copyString(const char *chars, int length);
 
