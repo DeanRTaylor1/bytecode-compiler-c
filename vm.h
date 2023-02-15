@@ -26,9 +26,14 @@ typedef struct {
   Value *stackTop; // store a pointer to the value in front of the top value if
   Table globals;
   Table strings;
-  ObjUpvalue* openUpvalues;
+  ObjUpvalue *openUpvalues;
+  size_t bytesAllocated;
+  size_t nextGC;
   // stack is empty it points to the arr[0]
   Obj *objects; // pointer to head of linked list of objects in memory
+  int grayCount;
+  int grayCapacity;
+  Obj **grayStack;
 } VM;
 
 typedef enum {
