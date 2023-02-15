@@ -26,6 +26,7 @@ typedef struct {
   Value *stackTop; // store a pointer to the value in front of the top value if
   Table globals;
   Table strings;
+  ObjString *initString;
   ObjUpvalue *openUpvalues;
   size_t bytesAllocated;
   size_t nextGC;
